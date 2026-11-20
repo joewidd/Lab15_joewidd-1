@@ -16,6 +16,7 @@ Date: 2026-11-20
 """
 
 import math
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 
@@ -23,8 +24,9 @@ import matplotlib.pyplot as plt
 NUM_POINTS = 5000
 # The butterfly curve repeats after t reaches 12 * pi.
 T_MAX = 12 * math.pi
-# Image file the finished plot is saved to.
-OUTPUT_FILE = "butterfly_curve.png"
+# Image file the finished plot is saved to. It is placed in the same folder
+# as this script so it works no matter which folder the script is run from.
+OUTPUT_FILE = Path(__file__).parent / "butterfly_curve.png"
 
 
 def butterfly_radius(t):
