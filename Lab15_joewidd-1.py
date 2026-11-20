@@ -23,6 +23,8 @@ import matplotlib.pyplot as plt
 NUM_POINTS = 5000
 # The butterfly curve repeats after t reaches 12 * pi.
 T_MAX = 12 * math.pi
+# Image file the finished plot is saved to.
+OUTPUT_FILE = "butterfly_curve.png"
 
 
 def butterfly_radius(t):
@@ -42,9 +44,23 @@ def generate_butterfly_data(num_points, t_max):
     return x_values, y_values
 
 
+def plot_curve(x_values, y_values, file_name):
+    """Plot the x and y lists, label the plot, and save it to file_name."""
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.plot(x_values, y_values)
+
+    ax.set_title("Butterfly Curve")
+    ax.set_xlabel("x = sin(t) * r(t)")
+    ax.set_ylabel("y = cos(t) * r(t)")
+
+    fig.savefig(file_name)
+    plt.close(fig)
+
+
 def main():
-    """Generate the butterfly curve data."""
+    """Generate the butterfly curve data, then plot and save it."""
     x_values, y_values = generate_butterfly_data(NUM_POINTS, T_MAX)
+    plot_curve(x_values, y_values, OUTPUT_FILE)
 
 
 if __name__ == "__main__":
