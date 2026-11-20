@@ -47,13 +47,20 @@ def generate_butterfly_data(num_points, t_max):
 def plot_curve(x_values, y_values, file_name):
     """Plot the x and y lists, label the plot, and save it to file_name."""
     fig, ax = plt.subplots(figsize=(8, 8))
-    ax.plot(x_values, y_values)
+    # Challenge: custom line color, dashed line style, and line thickness.
+    ax.plot(x_values, y_values, color="mediumvioletred", linestyle="--",
+            linewidth=1.2)
 
-    ax.set_title("Butterfly Curve")
-    ax.set_xlabel("x = sin(t) * r(t)")
-    ax.set_ylabel("y = cos(t) * r(t)")
+    ax.set_title("Butterfly Curve", fontsize=18)
+    ax.set_xlabel("x = sin(t) * r(t)", fontsize=12)
+    ax.set_ylabel("y = cos(t) * r(t)", fontsize=12)
 
-    fig.savefig(file_name)
+    # Challenge: add a grid and keep the x and y scales equal so the
+    # butterfly is not stretched.
+    ax.grid(True, linestyle=":", alpha=0.6)
+    ax.set_aspect("equal")
+
+    fig.savefig(file_name, dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
